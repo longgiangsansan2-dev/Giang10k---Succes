@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>SuccessCode - Mật mã thành công</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>💎</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html { font-size: 14px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Slate 100 - Tạo chiều sâu cho nền sáng */
+            color: #1f2937;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .dark body {
+            background-color: #131314 !important;
+            color: #e3e3e3 !important;
+        }
+
+        /* Tinh chỉnh card trong Light Mode để nổi bật hơn trên nền xám */
+        .bg-white { 
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+
+        /* AI Studio Style Dark Mode - GIỮ NGUYÊN */
+        .dark .bg-white { background-color: #1e1f20 !important; }
+        .dark .bg-slate-50 { background-color: #131314 !important; }
+        .dark .border-slate-100, .dark .border-slate-200 { border-color: #333537 !important; }
+        .dark .text-slate-800 { color: #e3e3e3 !important; }
+        .dark .text-slate-500 { color: #8e918f !important; }
+
+        .prose { max-width: none; font-size: 0.95rem; }
+        
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #3c4043; }
+        
+        @media (max-width: 640px) {
+            .container { padding-left: 1rem; padding-right: 1rem; }
+        }
+        
+        /* Cải thiện các nút nhấn trong Light Mode */
+        button:active { transform: scale(0.98); }
+
+        /* Tiptap Task List Styles */
+        .ProseMirror ul[data-type="taskList"] {
+          list-style: none;
+          padding: 0;
+        }
+        .ProseMirror ul[data-type="taskList"] li {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.5rem;
+          margin-bottom: 0.25rem;
+        }
+        .ProseMirror ul[data-type="taskList"] input[type="checkbox"] {
+          margin-top: 0.3rem;
+          cursor: pointer;
+        }
+        .ProseMirror ul[data-type="taskList"] li[data-checked="true"] > div > p {
+          text-decoration: line-through;
+          opacity: 0.5;
+        }
+        
+        /* Custom Callout Styles */
+        .callout {
+          display: flex;
+          gap: 1rem;
+          padding: 1rem;
+          border-radius: 0.75rem;
+          margin: 1.5rem 0;
+          border: 1px solid transparent;
+        }
+        .callout-icon { font-size: 1.25rem; flex-shrink: 0; }
+        .callout-content { flex: 1; min-width: 0; }
+        .callout-content p { margin: 0 !important; }
+
+        .callout-info { background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .callout-success { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .callout-warning { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .callout-error { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #f87171; }
+        .callout-tip { background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "date-fns/": "https://esm.sh/date-fns@^4.1.0/",
+    "date-fns": "https://esm.sh/date-fns@^4.1.0",
+    "path": "https://esm.sh/path@^0.12.7",
+    "url": "https://esm.sh/url@^0.11.4",
+    "@tiptap/extension-placeholder": "https://esm.sh/@tiptap/extension-placeholder@2.11.2",
+    "@tiptap/extension-underline": "https://esm.sh/@tiptap/extension-underline@2.11.2",
+    "@tiptap/extension-link": "https://esm.sh/@tiptap/extension-link@2.11.2",
+    "@tiptap/extension-dropcursor": "https://esm.sh/@tiptap/extension-dropcursor@2.11.2",
+    "@tiptap/extension-color": "https://esm.sh/@tiptap/extension-color@2.11.2",
+    "@dnd-kit/core": "https://esm.sh/@dnd-kit/core@^6.3.1",
+    "@tiptap/extension-floating-menu": "https://esm.sh/@tiptap/extension-floating-menu@2.11.2",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.89.0",
+    "@tiptap/extension-text-style": "https://esm.sh/@tiptap/extension-text-style@2.11.2",
+    "@tiptap/extension-heading": "https://esm.sh/@tiptap/extension-heading@2.11.2",
+    "@tiptap/starter-kit": "https://esm.sh/@tiptap/starter-kit@2.11.2",
+    "@tiptap/react": "https://esm.sh/@tiptap/react@2.11.2",
+    "@tiptap/extension-highlight": "https://esm.sh/@tiptap/extension-highlight@2.11.2",
+    "@tiptap/extension-bubble-menu": "https://esm.sh/@tiptap/extension-bubble-menu@2.11.2",
+    "@tiptap/extension-image": "https://esm.sh/@tiptap/extension-image@2.11.2",
+    "@tiptap/extension-table-header": "https://esm.sh/@tiptap/extension-table-header@2.11.2",
+    "@tiptap/extension-table-row": "https://esm.sh/@tiptap/extension-table-row@2.11.2",
+    "@tiptap/extension-table-cell": "https://esm.sh/@tiptap/extension-table-cell@2.11.2",
+    "@tiptap/extension-table": "https://esm.sh/@tiptap/extension-table@2.11.2",
+    "@tiptap/extension-task-list": "https://esm.sh/@tiptap/extension-task-list@2.11.2",
+    "@tiptap/extension-task-item": "https://esm.sh/@tiptap/extension-task-item@2.11.2"
+  }
+}
+</script>
+    <script>
+        // SCRIPT KHỞI TẠO THEME
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-[#131314] text-slate-900 dark:text-slate-100">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
